@@ -193,7 +193,7 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 	}
 
 	/**
-	 * 这也是为啥我们标注了@Compent @Repository @Service @Controller 能够被识别解析
+	 * 这也是为啥我们标注了@Component @Repository @Service @Controller 能够被识别解析
 	 * <p>Also supports Java EE 6's {@link javax.annotation.ManagedBean} and
 	 * JSR-330's {@link javax.inject.Named} annotations, if available.
 	 *
