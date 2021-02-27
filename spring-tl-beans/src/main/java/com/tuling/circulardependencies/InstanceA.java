@@ -1,10 +1,7 @@
 package com.tuling.circulardependencies;
 
 
-import jdk.nashorn.internal.objects.annotations.Property;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -29,8 +26,6 @@ public class InstanceA implements IApi {
     public InstanceA(InstanceB instanceB) {
         this.instanceB = instanceB;
     }
-
-
     public InstanceA() {
         System.out.println("InstanceA实例化");
     }
