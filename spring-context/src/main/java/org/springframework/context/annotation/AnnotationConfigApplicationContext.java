@@ -81,7 +81,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 		 *
 		 * spring默认的扫描包不是这个scanner对象
 		 * 而是自己new的一个ClassPathBeanDefinitionScanner
-		 * spring在执行工程后置处理器ConfigurationClassPostProcessor时，去扫描包时会new一个ClassPathBeanDefinitionScanner
+		 * spring在执行工厂后置处理器ConfigurationClassPostProcessor时，去扫描包时会new一个ClassPathBeanDefinitionScanner
 		 *
 		 * 这里的scanner仅仅是为了程序员可以手动调用AnnotationConfigApplicationContext对象的scan方法
 		 *

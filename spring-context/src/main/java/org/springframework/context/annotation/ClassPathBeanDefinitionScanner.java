@@ -142,7 +142,7 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 	}
 
 	/**
-	 * ClassPathBeanDefinitionScanner就是用来扫描我们classpath下的标注了@Service @Compent @Respository @Controller
+	 * ClassPathBeanDefinitionScanner就是用来扫描我们classpath下的标注了@Service @Component @Repository @Controller
 	 * 注解
 	 * @param environment 环境对象
 	 * definition profile metadata
