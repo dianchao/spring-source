@@ -106,7 +106,7 @@ final class PostProcessorRegistrationDelegate {
 			for (String ppName : postProcessorNames) {
 				//判断是否实现了PriorityOrdered接口的
 				if (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) {
-					//显示的调用getBean()的方式获取出该对象然后加入到currentRegistryProcessors集合中去
+					//显式的调用getBean()的方式获取出该对象然后加入到currentRegistryProcessors集合中去
 					currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));
 					//同时也加入到processedBeans集合中去
 					processedBeans.add(ppName);
@@ -121,7 +121,7 @@ final class PostProcessorRegistrationDelegate {
 			 * 用于进行bean定义的加载 比如我们的包扫描，@import  等等。。。。。。。。。
 			 */
 			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
-			//调用完之后，马上clea掉
+			//调用完之后，马上clear掉
 			currentRegistryProcessors.clear();
 //---------------------------------------调用内置实现PriorityOrdered接口ConfigurationClassPostProcessor完毕--优先级No1-End----------------------------------------------------------------------------------------------------------------------------
 			//去容器中获取BeanDefinitionRegistryPostProcessor的bean的处理器名称（内置的和上面注册的）
@@ -142,7 +142,7 @@ final class PostProcessorRegistrationDelegate {
 			registryProcessors.addAll(currentRegistryProcessors);
 			//调用他的后置处理方法
 			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
-			//调用完之后，马上clea掉
+			//调用完之后，马上clear掉
 			currentRegistryProcessors.clear();
 //-----------------------------------------调用自定义Order接口BeanDefinitionRegistryPostProcessor完毕-优先级No2-End-----------------------------------------------------------------------------------------------------------------------------
 			//调用没有实现任何优先级接口的BeanDefinitionRegistryPostProcessor
@@ -184,14 +184,14 @@ final class PostProcessorRegistrationDelegate {
 
 		else {
 			 //若当前的beanFactory没有实现了BeanDefinitionRegistry 说明没有注册Bean定义的能力
-			 // 那么就直接调用BeanDefinitionRegistryPostProcessor.postProcessBeanFactory方法
+			 //那么就直接调用BeanDefinitionRegistryPostProcessor.postProcessBeanFactory方法
 			invokeBeanFactoryPostProcessors(beanFactoryPostProcessors, beanFactory);
 		}
 
 //-----------------------------------------所有BeanDefinitionRegistryPostProcessor调用完毕--End-----------------------------------------------------------------------------------------------------------------------------
 
 
-//-----------------------------------------处理BeanFactoryPostProcessor --Begin-----------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------处理BeanFactoryPostProcessor--Begin-----------------------------------------------------------------------------------------------------------------------------
 
 		//获取容器中所有的 BeanFactoryPostProcessor
 		String[] postProcessorNames =
@@ -240,13 +240,13 @@ final class PostProcessorRegistrationDelegate {
 			nonOrderedPostProcessors.add(beanFactory.getBean(postProcessorName, BeanFactoryPostProcessor.class));
 		}
 		invokeBeanFactoryPostProcessors(nonOrderedPostProcessors, beanFactory);
-//-----------------------------------------处理BeanFactoryPostProcessor --End-----------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------处理BeanFactoryPostProcessor--End-----------------------------------------------------------------------------------------------------------------------------
 
 		// Clear cached merged bean definitions since the post-processors might have
 		// modified the original metadata, e.g. replacing placeholders in values...
 		beanFactory.clearMetadataCache();
 
-//------------------------- BeanFactoryPostProcessor和BeanDefinitionRegistryPostProcessor调用完毕 --End-----------------------------------------------------------------------------------------------------------------------------
+//------------------------- BeanFactoryPostProcessor和BeanDefinitionRegistryPostProcessor调用完毕--End-----------------------------------------------------------------------------------------------------------------------------
 
 	}
 
