@@ -83,7 +83,7 @@ class ComponentScanAnnotationParser {
 				BeanUtils.instantiateClass(generatorClass));
 
 		/**
-		 * 解析@Scope的ProxyMode属性， 该属性可以将Bean创建问jdk代理或cglib代理
+		 * 解析@Scope的ProxyMode属性， 该属性可以将Bean创建为jdk代理或cglib代理
 		 */
 		ScopedProxyMode scopedProxyMode = componentScan.getEnum("scopedProxy");
 		if (scopedProxyMode != ScopedProxyMode.DEFAULT) {
